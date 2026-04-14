@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klyro Enterprises | Mfumo wa Kijamii na Huduma</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue:        #1a6ef5;
+      --blue-hover:  #0f55d4;
+      --blue-glow:   rgba(26,110,245,0.2);
+      --bg-glass:    rgba(10, 13, 20, 0.85);
+      --border:      rgba(255,255,255,0.08);
+      --text:        #f0f4ff;
+      --muted:       #8a95b0;
+      --font-head:   'Syne', sans-serif;
+      --font-body:   'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: #05070e;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    /* Background image layer */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('klyroback.jpg') center center / cover no-repeat;
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* HEADER BORESHWA */
+    .header-main {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 15px;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .logo-box {
+      width: 45px; height: 45px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #1a6ef5, #0a3fa8);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .logo-box img { width: 28px; height: 28px; }
+
+    .brand-text h1 { font-family: var(--font-head); font-size: 1.2rem; line-height: 1; }
+    .brand-text p { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* Sehemu ya namba 1 na 2 kwenye picha yako */
+    .header-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    .nav-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(26,110,245,0.08);
+      padding: 6px 10px;
+      border-radius: 100px;
+    }
+
+    /* CARD KUU */
+    .main-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px 20px;
+      backdrop-filter: blur(20px);
+    }
+
+    .field-label { font-size: 0.7rem; color: var(--muted); margin-bottom: 8px; display: block; text-transform: uppercase; }
+    
+    .input-group { position: relative; margin-bottom: 15px; }
+    .input-group input {
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 12px 20px;
+      color: #fff;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: var(--blue);
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+
+    /* GRID ZA HUDUMA CHINI */
+    .services-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .service-box {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 15px;
+    }
+
+    .service-box h3 {
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      color: var(--blue);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .s-item {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .s-dot { width: 4px; height: 4px; background: var(--blue); border-radius: 50%; }
+
+    /* Footer */
+    .footer { text-align: center; font-size: 0.65rem; color: var(--muted); padding: 20px; }
+
+    @media (max-width: 400px) {
+        .service-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <header class="header-main">
+    <div class="brand-section">
+      <div class="logo-box">
+        <img src="logo.png" alt="Klyro">
+      </div>
+      <div class="brand-text">
+        <h1>Klyro Enterprises</h1>
+        <p>Morogoro, Tanzania</p>
+      </div>
+    </div>
+    
+    <div class="header-nav">
+      <div class="nav-tag"><i class="fas fa-gavel"></i> Kisheria</div>
+      <div class="nav-tag"><i class="fas fa-microchip"></i> Teknolojia</div>
+    </div>
+  </header>
+
+  <main class="main-card">
+    <div id="loginView">
+      <label class="field-label">Nenosiri la Mfumo</label>
+      <div class="input-group">
+        <input type="password" id="pwInput" placeholder="Ingiza nenosiri...">
+      </div>
+      <button class="btn-login" onclick="doLogin()">
+        Fungua Mfumo <i class="fas fa-arrow-right"></i>
+      </button>
+      <p id="errMsg" style="color:#f87171; font-size:0.75rem; margin-top:10px; text-align:center; display:none;">Nenosiri si sahihi!</p>
+    </div>
+
+    <div id="dashView" style="display:none; text-align:center;">
+      <p style="font-size:0.7rem; color:var(--blue); margin-bottom:5px;">NENOSIRI LA LEO:</p>
+      <h2 id="pwDisplay" style="font-size:2rem; letter-spacing:5px; margin-bottom:15px;">----</h2>
+      <button class="btn-login" onclick="doLogout()" style="background:rgba(255,255,255,0.1);">Toka</button>
+    </div>
+  </main>
+
+  <section class="services-section">
+    <div class="service-box">
+      <h3>Huduma za Kisheria</h3>
+      <div class="service-grid">
+        <div class="s-item"><div class="s-dot"></div>Usajili Makampuni</div>
+        <div class="s-item"><div class="s-dot"></div>BRELA</div>
+        <div class="s-item"><div class="s-dot"></div>TIN / NIDA</div>
+        <div class="s-item"><div class="s-dot"></div>Vyeti vya Kuzaliwa</div>
+      </div>
+    </div>
+
+    <div class="service-box">
+      <h3>Teknolojia & Biashara</h3>
+      <div class="service-grid">
+        <div class="s-item"><div class="s-dot"></div>Digital Cards</div>
+        <div class="s-item"><div class="s-dot"></div>QR Codes</div>
+        <div class="s-item"><div class="s-dot"></div>KlyroFix</div>
+        <div class="s-item"><div class="s-dot"></div>Mifumo ya Mauzo</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 Klyro Enterprises | Morogoro
+  </footer>
+
+</div>
+
+<script>
+  const MASTER_PW = "klyro";
+  let   TODAY_PW  = "4G: iLook125 5G:iPasted125 "; 
+
+  function doLogin() {
+    const input = document.getElementById('pwInput').value;
+    if(input === MASTER_PW) {
+      document.getElementById('loginView').style.display = 'none';
+      document.getElementById('dashView').style.display = 'block';
+      document.getElementById('pwDisplay').innerText = TODAY_PW;
+    } else {
+      document.getElementById('errMsg').style.display = 'block';
+    }
+  }
+
+  function doLogout() {
+    document.getElementById('loginView').style.display = 'block';
+    document.getElementById('dashView').style.display = 'none';
+    document.getElementById('pwInput').value = '';
+  }
+</script>
+
+</body>
+</html>
