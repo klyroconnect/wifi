@@ -2,37 +2,38 @@
 <html lang="sw">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Klyro Enterprises | Mfumo wa Kijamii na Huduma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Klyro Enterprises | Mfumo Rahisi</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     html, body {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
     }
 
     :root {
-      --blue:        #1a6ef5;
-      --blue-hover:  #0f55d4;
-      --blue-glow:   rgba(26,110,245,0.2);
-      --blue-subtle: rgba(26,110,245,0.08);
-      --blue-border: rgba(26,110,245,0.3);
-      --bg1:     rgba(10, 13, 20, 0.82);
-      --bg2:     rgba(14, 18, 28, 0.88);
-      --bg3:     rgba(20, 25, 38, 0.9);
-      --border:  rgba(255,255,255,0.08);
+      --blue: #1a6ef5;
+      --blue-hover: #0f55d4;
+      --blue-glow: rgba(26,110,245,0.2);
+      --bg1: rgba(10, 13, 20, 0.82);
+      --bg2: rgba(14, 18, 28, 0.88);
+      --border: rgba(255,255,255,0.08);
       --border2: rgba(255,255,255,0.15);
       --border3: rgba(26,110,245,0.4);
-      --text:    #f0f4ff;
-      --muted:   #8a95b0;
-      --hint:    #4e5670;
-      --green:   #22c55e;
-      --wa:      #25d366;
+      --text: #f0f4ff;
+      --muted: #8a95b0;
+      --hint: #4e5670;
+      --green: #22c55e;
+      --wa: #25d366;
       --r-sm: 8px;
       --r-md: 14px;
       --r-lg: 20px;
@@ -68,85 +69,42 @@
       width: 100%;
       height: 100vh;
       display: grid;
-      grid-template-columns: 220px 1fr 220px;
-      gap: 14px;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
       padding: 16px;
       position: relative;
       z-index: 1;
     }
 
-    /* SIDE PANELS */
-    .side-panel {
-      display: flex;
-      flex-direction: column;
+    /* Paneli za kando – zina namba moja tu */
+    .side-number {
       background: var(--bg1);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      overflow: hidden;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-    }
-
-    .panel-title {
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: var(--font-head);
-      font-size: 0.68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--blue);
-      padding: 13px 14px 11px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      flex-shrink: 0;
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(26,110,245,0.4);
+      text-shadow: 0 0 8px rgba(26,110,245,0.2);
+      transition: all 0.2s;
+      min-width: 70px;
+      width: auto;
+      padding: 12px;
     }
 
-    .services-list {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding: 8px 10px;
-      gap: 0;
-    }
-
-    .service-item {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 8px;
-      border-radius: var(--r-sm);
-      font-size: 0.77rem;
-      color: var(--muted);
-      line-height: 1.3;
-      transition: background 0.15s, color 0.15s;
-      cursor: default;
-    }
-
-    .service-item:hover {
-      background: var(--blue-subtle);
-      color: var(--text);
-    }
-
-    .service-dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--blue);
-      flex-shrink: 0;
-      opacity: 0.7;
-    }
-
-    .service-item:hover .service-dot { opacity: 1; }
-
-    /* CENTER */
+    /* Sehemu ya katikati */
     .center-col {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      min-width: 0; /* kuzuia overflow */
     }
 
-    /* HEADER STRIP */
     .header-strip {
       display: flex;
       align-items: center;
@@ -154,53 +112,42 @@
       background: var(--bg1);
       border: 1px solid var(--border);
       border-radius: var(--r-lg);
-      padding: 11px 18px;
+      padding: 10px 18px;
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       flex-shrink: 0;
     }
 
     .logo-box {
-      width: 44px; height: 44px;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
       background: linear-gradient(135deg, #1a6ef5, #0a3fa8);
       border: 1px solid rgba(26,110,245,0.5);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
       overflow: hidden;
-      position: relative;
-    }
-
-    .logo-box::after {
-      content: '';
-      position: absolute;
-      top: -35%; left: -15%;
-      width: 55%; height: 50%;
-      background: rgba(255,255,255,0.18);
-      border-radius: 50%;
-      pointer-events: none;
     }
 
     .logo-box img {
-      width: 27px; height: 27px;
+      width: 27px;
+      height: 27px;
       object-fit: contain;
-      position: relative; z-index: 1;
     }
 
     .logo-fallback {
       font-family: var(--font-head);
-      font-size: 18px; font-weight: 700;
+      font-size: 18px;
+      font-weight: 700;
       color: #fff;
-      position: relative; z-index: 1;
     }
 
     .header-text h1 {
       font-family: var(--font-head);
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--text);
       letter-spacing: -0.3px;
-      line-height: 1.2;
     }
 
     .header-text p {
@@ -209,31 +156,20 @@
       margin-top: 2px;
     }
 
-    /* MAIN CARD */
+    /* CARD kuu */
     .main-card {
       flex: 1;
       background: var(--bg2);
       border: 1px solid var(--border2);
       border-radius: var(--r-xl);
       padding: 20px 22px 16px;
-      position: relative;
-      overflow: hidden;
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       display: flex;
       flex-direction: column;
+      overflow-y: auto;
     }
 
-    .main-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 20%; right: 20%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--blue), transparent);
-      opacity: 0.6;
-    }
-
-    /* LOGIN */
+    /* LOGIN VIEW */
     #loginView {
       display: flex;
       flex-direction: column;
@@ -247,7 +183,6 @@
       letter-spacing: 0.9px;
       color: var(--muted);
       margin-bottom: 7px;
-      display: block;
     }
 
     .input-row {
@@ -265,10 +200,7 @@
       font-family: var(--font-body);
       font-size: 0.92rem;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
     }
-
-    .input-row input::placeholder { color: var(--hint); }
 
     .input-row input:focus {
       border-color: var(--blue);
@@ -277,15 +209,14 @@
 
     .eye-btn {
       position: absolute;
-      right: 13px; top: 50%;
+      right: 13px;
+      top: 50%;
       transform: translateY(-50%);
-      background: none; border: none;
-      color: var(--hint); cursor: pointer;
-      padding: 4px;
-      display: flex; align-items: center;
-      transition: color 0.15s;
+      background: none;
+      border: none;
+      color: var(--hint);
+      cursor: pointer;
     }
-    .eye-btn:hover { color: var(--muted); }
 
     .btn-login {
       width: 100%;
@@ -297,14 +228,16 @@
       font-family: var(--font-head);
       font-size: 0.88rem;
       font-weight: 600;
-      letter-spacing: 0.3px;
-      display: flex; align-items: center; justify-content: center; gap: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.2s;
       box-shadow: 0 4px 16px rgba(26,110,245,0.3);
     }
-    .btn-login:hover { background: var(--blue-hover); transform: translateY(-1px); }
-    .btn-login:active { transform: scale(0.98); }
+
+    .btn-login:hover { background: var(--blue-hover); }
 
     .error-box {
       background: rgba(239,68,68,0.1);
@@ -319,7 +252,7 @@
       gap: 7px;
     }
 
-    /* CONTACTS */
+    /* MAWASILIANO */
     .contact-section {
       margin-top: auto;
       padding-top: 11px;
@@ -332,7 +265,6 @@
       text-align: center;
       margin-bottom: 8px;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
     }
 
     .contact-grid {
@@ -343,28 +275,24 @@
     }
 
     .contact-btn {
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 6px;
       padding: 7px 8px;
       background: rgba(0,0,0,0.3);
       border: 1px solid var(--border2);
       border-radius: var(--r-pill);
-      font-family: var(--font-body);
       font-size: 0.73rem;
       color: var(--muted);
       text-decoration: none;
-      transition: background 0.15s, transform 0.1s;
+      transition: 0.1s;
       white-space: nowrap;
     }
-    .contact-btn:hover { background: rgba(255,255,255,0.05); transform: translateY(-1px); }
-    .contact-btn:active { transform: scale(0.97); }
 
-    .contact-btn.phone { color: #60a5fa; border-color: rgba(96,165,250,0.25); }
-    .contact-btn.phone:hover { background: rgba(96,165,250,0.07); }
-    .contact-btn.wa    { color: var(--wa); border-color: rgba(37,211,102,0.25); }
-    .contact-btn.wa:hover { background: rgba(37,211,102,0.07); }
-    .contact-btn.gmail { color: #f87171; border-color: rgba(248,113,113,0.25); }
-    .contact-btn.gmail:hover { background: rgba(248,113,113,0.07); }
+    .contact-btn.phone { color: #60a5fa; }
+    .contact-btn.wa { color: var(--wa); }
+    .contact-btn.gmail { color: #f87171; }
 
     /* DASHBOARD */
     #dashView {
@@ -381,7 +309,6 @@
     }
 
     .badge-ok {
-      display: inline-flex; align-items: center; gap: 6px;
       background: rgba(34,197,94,0.1);
       border: 1px solid rgba(34,197,94,0.25);
       border-radius: var(--r-pill);
@@ -395,14 +322,13 @@
       border: 1px solid var(--border2);
       border-radius: var(--r-pill);
       padding: 6px 13px;
-      font-family: var(--font-body);
       font-size: 0.76rem;
       color: var(--muted);
       cursor: pointer;
-      display: flex; align-items: center; gap: 6px;
-      transition: color 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .btn-logout:hover { color: var(--text); }
 
     .pw-card {
       flex: 1;
@@ -415,76 +341,57 @@
       justify-content: center;
       text-align: center;
       padding: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pw-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 15%; right: 15%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(26,110,245,0.6), transparent);
     }
 
     .pw-chip {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--blue-subtle);
-      border: 1px solid var(--blue-border);
+      background: rgba(26,110,245,0.15);
+      border: 1px solid var(--border3);
       border-radius: var(--r-pill);
       padding: 3px 12px;
       font-size: 0.64rem;
-      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
       color: #93c5fd;
       margin-bottom: 12px;
     }
 
     .pw-value {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 2.2rem;
+      font-family: monospace;
+      font-size: 2rem;
       font-weight: 700;
-      color: var(--text);
-      letter-spacing: 5px;
-      margin-bottom: 14px;
+      letter-spacing: 3px;
       word-break: break-all;
-      text-shadow: 0 0 28px rgba(26,110,245,0.5);
+      margin-bottom: 14px;
     }
 
     .btn-copy {
-      display: inline-flex; align-items: center; gap: 7px;
       background: rgba(255,255,255,0.05);
       border: 1px solid var(--border2);
       border-radius: var(--r-pill);
       padding: 7px 18px;
-      font-family: var(--font-body);
       font-size: 0.8rem;
       color: var(--muted);
       cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
     }
-    .btn-copy:hover { border-color: var(--blue); color: #93c5fd; background: var(--blue-subtle); }
 
     .copy-ok {
       font-size: 0.73rem;
       color: var(--green);
       margin-top: 8px;
-      min-height: 16px;
+      min-height: 20px;
     }
 
     .info-notice {
       background: rgba(26,110,245,0.07);
-      border: 1px solid var(--blue-border);
+      border: 1px solid var(--border3);
       border-radius: var(--r-md);
       padding: 8px 13px;
       font-size: 0.74rem;
       color: #93c5fd;
-      display: flex; align-items: center; gap: 8px;
-      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* FOOTER */
     .footer-strip {
       background: var(--bg1);
       border: 1px solid var(--border);
@@ -494,178 +401,121 @@
       font-size: 0.66rem;
       color: var(--hint);
       flex-shrink: 0;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
     }
 
-    /* Hide all scrollbars */
+    /* Hakuna scrollbars */
     ::-webkit-scrollbar { display: none; }
-    * { scrollbar-width: none; -ms-overflow-style: none; }
+    * { scrollbar-width: none; }
+
+    @media (max-width: 640px) {
+      .app {
+        gap: 8px;
+        padding: 10px;
+      }
+      .side-number {
+        font-size: 2.5rem;
+        min-width: 50px;
+        padding: 8px;
+      }
+      .pw-value {
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+      }
+      .contact-btn {
+        white-space: normal;
+        font-size: 0.65rem;
+        padding: 6px 5px;
+      }
+      .main-card {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="app">
+  <!-- PANEL KUSHOTO: NAMBA 1 -->
+  <div class="side-number">1</div>
 
-  <!-- LEFT PANEL -->
-  <div class="side-panel">
-    <div class="panel-title">
-      <i class="fas fa-building"></i> Huduma za kisheria &amp; taasisi
-    </div>
-    <div class="services-list">
-      <div class="service-item"><span class="service-dot"></span>Usajili wa makampuni</div>
-      <div class="service-item"><span class="service-dot"></span>Cheti cha kuzaliwa</div>
-      <div class="service-item"><span class="service-dot"></span>Cheti cha kifo</div>
-      <div class="service-item"><span class="service-dot"></span>Cheti cha ndoa</div>
-      <div class="service-item"><span class="service-dot"></span>Loss report</div>
-      <div class="service-item"><span class="service-dot"></span>Usajili wa microfinance</div>
-      <div class="service-item"><span class="service-dot"></span>TIN registration</div>
-      <div class="service-item"><span class="service-dot"></span>Maombi ya NIDA</div>
-      <div class="service-item"><span class="service-dot"></span>Usajili wa biashara (BRELA)</div>
-      <div class="service-item"><span class="service-dot"></span>Maombi ya mikopo (HESLB)</div>
-    </div>
-  </div>
-
-  <!-- CENTER -->
+  <!-- SEHEMU YA KATI -->
   <div class="center-col">
-
     <div class="header-strip">
       <div class="logo-box">
-        <img src="logo.png" alt="Klyro"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <img src="logo.png" alt="Klyro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
         <span class="logo-fallback" style="display:none;">K</span>
       </div>
       <div class="header-text">
         <h1>Klyro Enterprises</h1>
-        <p>Mfumo wa kijamii na huduma &middot; Morogoro</p>
+        <p>Mfumo wa kijamii na huduma</p>
       </div>
     </div>
 
     <div class="main-card">
-
-      <!-- LOGIN VIEW -->
+      <!-- LOGIN -->
       <div id="loginView">
-        <label class="field-label" for="pwInput">
-          <i class="fas fa-key" style="margin-right:5px;color:var(--blue);font-size:0.62rem;"></i>
-          Nenosiri la mfumo
-        </label>
+        <label class="field-label"><i class="fas fa-key" style="margin-right:5px;"></i>Nenosiri la mfumo</label>
         <div class="input-row">
-          <input type="password" id="pwInput" placeholder="Ingiza nenosiri..." autocomplete="off" spellcheck="false">
-          <button type="button" class="eye-btn" onclick="toggleEye()">
-            <i class="far fa-eye-slash" id="eyeIcon"></i>
-          </button>
+          <input type="password" id="pwInput" placeholder="Ingiza nenosiri...">
+          <button type="button" class="eye-btn" onclick="toggleEye()"><i class="far fa-eye-slash" id="eyeIcon"></i></button>
         </div>
-        <button class="btn-login" onclick="doLogin()">
-          <i class="fas fa-arrow-right-to-bracket"></i>
-          Fungua Mfumo
-        </button>
-        <div class="error-box" id="errBox">
-          <i class="fas fa-circle-exclamation"></i>
-          <span id="errMsg">Nenosiri si sahihi. Jaribu tena.</span>
-        </div>
+        <button class="btn-login" onclick="doLogin()"><i class="fas fa-arrow-right-to-bracket"></i> Fungua Mfumo</button>
+        <div class="error-box" id="errBox"><i class="fas fa-circle-exclamation"></i><span id="errMsg"></span></div>
 
         <div class="contact-section">
-          <div class="contact-heading">
-            <i class="fas fa-headset" style="margin-right:4px;"></i>Kwa msaada wa haraka
+          <div class="contact-heading"><i class="fas fa-headset"></i> Kwa msaada wa haraka</div>
+          <div class="contact-grid">
+            <a class="contact-btn phone" href="tel:+255763915562"><i class="fas fa-phone-alt"></i> +255 763 915 562</a>
+            <a class="contact-btn phone" href="tel:+255663445562"><i class="fas fa-phone-alt"></i> +255 663 445 562</a>
           </div>
           <div class="contact-grid">
-            <a class="contact-btn phone" href="tel:+255763915562">
-              <i class="fas fa-phone-alt"></i>+255 763 915 562
-            </a>
-            <a class="contact-btn phone" href="tel:+255663445562">
-              <i class="fas fa-phone-alt"></i>+255 663 445 562
-            </a>
-          </div>
-          <div class="contact-grid">
-            <a class="contact-btn wa"
-               href="https://wa.me/255763915562?text=Karibu%20Klyro%20Services%2C%20ninahitaji%20msaada."
-               target="_blank" rel="noopener">
-              <i class="fab fa-whatsapp"></i>WhatsApp
-            </a>
-            <a class="contact-btn gmail"
-               href="https://mail.google.com/mail/?view=cm&to=klyro.connect%40gmail.com&su=Klyro%20Support&body=Habari%2C%0A%0ANinahitaji%20msaada%20na%20huduma%20za%20Klyro%20Enterprises.%0A%0AAsante."
-               target="_blank" rel="noopener">
-              <i class="fab fa-google"></i>Gmail
-            </a>
+            <a class="contact-btn wa" href="https://wa.me/255763915562?text=Karibu%20Klyro%20Services%2C%20ninahitaji%20msaada." target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a class="contact-btn gmail" href="https://mail.google.com/mail/?view=cm&to=klyro.connect@gmail.com&su=Klyro%20Support&body=Habari%2C%0A%0ANinahitaji%20msaada%20wa%20huduma." target="_blank"><i class="fab fa-google"></i> Gmail</a>
           </div>
         </div>
       </div>
-      <!-- /LOGIN -->
 
-      <!-- DASHBOARD VIEW -->
+      <!-- DASHBOARD -->
       <div id="dashView">
         <div class="dash-topbar">
-          <div class="badge-ok">
-            <i class="fas fa-shield-check" style="font-size:0.68rem;"></i>
-            Umeingia kwa usalama
-          </div>
-          <button class="btn-logout" onclick="doLogout()">
-            <i class="fas fa-sign-out-alt"></i>Toka
-          </button>
+          <div class="badge-ok"><i class="fas fa-shield-check"></i> Umeingia kwa usalama</div>
+          <button class="btn-logout" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Toka</button>
         </div>
         <div class="pw-card">
-          <div class="pw-chip">
-            <i class="fas fa-fingerprint" style="font-size:0.68rem;"></i>
-            Nenosiri la leo
-          </div>
+          <div class="pw-chip"><i class="fas fa-fingerprint"></i> Nenosiri la leo (wife password)</div>
           <div class="pw-value" id="pwDisplay">––––</div>
-          <button class="btn-copy" onclick="copyPw()">
-            <i class="fas fa-copy"></i>Nakili nenosiri
-          </button>
+          <button class="btn-copy" onclick="copyPw()"><i class="fas fa-copy"></i> Nakili nenosiri</button>
           <div class="copy-ok" id="copyOk"></div>
         </div>
         <div class="info-notice">
-          <i class="fas fa-circle-info" style="flex-shrink:0;"></i>
-          Nenosiri hili ni la siku ya leo tu. Badilisha kwenye faili ya mfumo kila asubuhi.
+          <i class="fas fa-circle-info"></i> Nenosiri hili hubadilishwa kwenye GitHub kila siku.
         </div>
       </div>
-      <!-- /DASHBOARD -->
-
     </div>
 
     <div class="footer-strip">
-      &copy; 2025 Klyro Enterprises &middot; Morogoro, Tanzania
-    </div>
-
-  </div>
-  <!-- /CENTER -->
-
-  <!-- RIGHT PANEL -->
-  <div class="side-panel">
-    <div class="panel-title">
-      <i class="fas fa-microchip"></i> Teknolojia &amp; biashara
-    </div>
-    <div class="services-list">
-      <div class="service-item"><span class="service-dot"></span>Digital Business Cards</div>
-      <div class="service-item"><span class="service-dot"></span>Advanced QR Codes</div>
-      <div class="service-item"><span class="service-dot"></span>Barcodes</div>
-      <div class="service-item"><span class="service-dot"></span>Mifumo ya mauzo (stock)</div>
-      <div class="service-item"><span class="service-dot"></span>Employees management</div>
-      <div class="service-item"><span class="service-dot"></span>Salary management</div>
-      <div class="service-item"><span class="service-dot"></span>Professional Gmail accounts</div>
-      <div class="service-item"><span class="service-dot"></span>Advanced vCards</div>
-      <div class="service-item"><span class="service-dot"></span>Customer management</div>
-      <div class="service-item"><span class="service-dot"></span>KlyroTodoList</div>
-      <div class="service-item"><span class="service-dot"></span>KlyroFix (laptop/computer)</div>
-      <div class="service-item"><span class="service-dot"></span>Data za utafiti</div>
+      &copy; 2025 Klyro Enterprises &middot; Tanzania
     </div>
   </div>
 
+  <!-- PANEL KULIA: NAMBA 2 -->
+  <div class="side-number">2</div>
 </div>
 
 <script>
+  // ========== CONFIGURATION ==========
   const LOGIN_PASSWORD = "klyro";
-  let   WIFE_PASSWORD  = "4521oOpk2";  // ← badilisha hapa kila asubuhi
-  const SESSION_KEY    = "klyro_auth_v2";
+  let WIFE_PASSWORD = "4521oOpk2";   // Badilisha hapa kila siku
+  const SESSION_KEY = "klyro_auth";
 
   const loginView = document.getElementById("loginView");
-  const dashView  = document.getElementById("dashView");
-  const pwInput   = document.getElementById("pwInput");
-  const eyeIcon   = document.getElementById("eyeIcon");
-  const errBox    = document.getElementById("errBox");
-  const errMsg    = document.getElementById("errMsg");
+  const dashView = document.getElementById("dashView");
+  const pwInput = document.getElementById("pwInput");
+  const eyeIcon = document.getElementById("eyeIcon");
+  const errBox = document.getElementById("errBox");
+  const errMsg = document.getElementById("errMsg");
   const pwDisplay = document.getElementById("pwDisplay");
-  const copyOkEl  = document.getElementById("copyOk");
+  const copyOk = document.getElementById("copyOk");
 
   function toggleEye() {
     if (pwInput.type === "password") {
@@ -679,15 +529,15 @@
 
   function showDash() {
     loginView.style.display = "none";
-    dashView.style.display  = "flex";
-    pwDisplay.textContent   = WIFE_PASSWORD;
-    copyOkEl.textContent    = "";
+    dashView.style.display = "flex";
+    pwDisplay.textContent = WIFE_PASSWORD;
+    copyOk.textContent = "";
   }
 
-  function showLogin(clearInput) {
-    dashView.style.display  = "none";
+  function showLogin(clear = true) {
+    dashView.style.display = "none";
     loginView.style.display = "flex";
-    if (clearInput) {
+    if (clear) {
       pwInput.value = "";
       pwInput.type = "password";
       eyeIcon.className = "far fa-eye-slash";
@@ -706,7 +556,7 @@
       sessionStorage.setItem(SESSION_KEY, "true");
       showDash();
     } else {
-      errMsg.textContent = "Nenosiri si sahihi. Tumia nenosiri sahihi.";
+      errMsg.textContent = "Nenosiri si sahihi. Jaribu 'klyro'.";
       errBox.style.display = "flex";
       pwInput.value = "";
       pwInput.focus();
@@ -721,26 +571,29 @@
   async function copyPw() {
     try {
       await navigator.clipboard.writeText(WIFE_PASSWORD);
-      copyOkEl.innerHTML = '<i class="fas fa-check-circle" style="margin-right:4px;"></i>Imekopewa!';
-      setTimeout(() => { copyOkEl.textContent = ""; }, 2200);
+      copyOk.innerHTML = '<i class="fas fa-check-circle"></i> Ime nakiliwa!';
+      setTimeout(() => { copyOk.textContent = ""; }, 2000);
     } catch(e) {
-      copyOkEl.textContent = "Nakili: " + WIFE_PASSWORD;
+      copyOk.textContent = "Nakili manually: " + WIFE_PASSWORD;
     }
   }
 
-  pwInput.addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
-  pwInput.addEventListener("input",   () => { errBox.style.display = "none"; });
+  pwInput.addEventListener("keypress", (e) => { if (e.key === "Enter") doLogin(); });
+  pwInput.addEventListener("input", () => { errBox.style.display = "none"; });
 
-  (function init() {
-    if (sessionStorage.getItem(SESSION_KEY) === "true") showDash();
-    else showLogin(false);
-  })();
+  // Angalia session
+  if (sessionStorage.getItem(SESSION_KEY) === "true") {
+    showDash();
+  } else {
+    showLogin(false);
+  }
 
+  // Ikiwa ukurasa unarudi kutoka cache
   window.addEventListener("pageshow", () => {
-    if (sessionStorage.getItem(SESSION_KEY) === "true" &&
-        loginView.style.display !== "flex") showDash();
+    if (sessionStorage.getItem(SESSION_KEY) === "true" && loginView.style.display !== "none") {
+      showDash();
+    }
   });
 </script>
-
 </body>
 </html>
