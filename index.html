@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Klyro Enterprises | Mfumo Kamili wa Huduma</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #f0f4ff;
+      position: relative;
+      background: url('klyroback.jpg') center center / cover no-repeat fixed;
+      backdrop-filter: blur(0px);
+    }
+
+    /* Overlay ya giza */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 7, 14, 0.75);
+      z-index: -1;
+    }
+
+    .app {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Paneli za kushoto na kulia - zinaweza kubana na kupanuka */
+    .side-panel {
+      flex: 1.2;
+      min-width: 220px;
+      background: rgba(10, 13, 20, 0.82);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 16px 12px;
+      height: fit-content;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .panel-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #1a6ef5;
+      padding-bottom: 12px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 8px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: #b0bbd9;
+      transition: all 0.15s;
+    }
+
+    .service-item i {
+      width: 22px;
+      font-size: 0.85rem;
+      color: #1a6ef5;
+    }
+
+    .service-item:hover {
+      background: rgba(26,110,245,0.15);
+      color: white;
+    }
+
+    /* Sehemu ya katikati - inachukua nafasi kubwa */
+    .center-col {
+      flex: 2.5;
+      min-width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Header */
+    .header-strip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(10, 13, 20, 0.82);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 12px 20px;
+    }
+
+    .logo-box {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #1a6ef5, #0a3fa8);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo-box img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .logo-fallback {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .header-text h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .header-text p {
+      font-size: 0.7rem;
+      color: #8a95b0;
+    }
+
+    /* CARD kuu ya login / dashboard */
+    .main-card {
+      background: rgba(14, 18, 28, 0.88);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* LOGIN */
+    .field-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a95b0;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .input-row {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .input-row input {
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 60px;
+      padding: 12px 50px 12px 18px;
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .input-row input:focus {
+      border-color: #1a6ef5;
+      box-shadow: 0 0 0 3px rgba(26,110,245,0.2);
+    }
+
+    .eye-btn {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #8a95b0;
+      cursor: pointer;
+    }
+
+    .btn-login {
+      width: 100%;
+      background: #1a6ef5;
+      border: none;
+      border-radius: 60px;
+      padding: 12px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 6px 18px rgba(26,110,245,0.3);
+    }
+
+    .btn-login:hover { background: #0f55d4; }
+
+    .error-box {
+      background: rgba(239,68,68,0.12);
+      border-left: 3px solid #ef4444;
+      border-radius: 14px;
+      padding: 10px;
+      font-size: 0.75rem;
+      color: #fca5a5;
+      margin-top: 12px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* MAWASILIANO */
+    .contact-section {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-heading {
+      font-size: 0.7rem;
+      text-align: center;
+      color: #8a95b0;
+      margin-bottom: 12px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 60px;
+      padding: 8px 10px;
+      font-size: 0.75rem;
+      color: #b0bbd9;
+      text-decoration: none;
+      transition: 0.1s;
+    }
+
+    .contact-btn.phone { color: #60a5fa; }
+    .contact-btn.wa { color: #25d366; }
+    .contact-btn.gmail { color: #f87171; }
+
+    /* DASHBOARD */
+    #dashView {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .dash-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .badge-ok {
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 60px;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      color: #86efac;
+    }
+
+    .btn-logout {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 60px;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      color: #b0bbd9;
+      cursor: pointer;
+    }
+
+    .pw-card {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(26,110,245,0.4);
+      border-radius: 28px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .pw-chip {
+      background: rgba(26,110,245,0.15);
+      border: 1px solid rgba(26,110,245,0.3);
+      border-radius: 60px;
+      display: inline-block;
+      padding: 4px 16px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 16px;
+    }
+
+    .pw-value {
+      font-family: 'Courier New', monospace;
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 4px;
+      word-break: break-all;
+      margin-bottom: 18px;
+    }
+
+    .btn-copy {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 60px;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      color: #cbd5e6;
+      cursor: pointer;
+    }
+
+    .copy-ok {
+      font-size: 0.7rem;
+      color: #22c55e;
+      margin-top: 10px;
+    }
+
+    .info-notice {
+      background: rgba(26,110,245,0.08);
+      border: 1px solid rgba(26,110,245,0.25);
+      border-radius: 18px;
+      padding: 10px 14px;
+      font-size: 0.75rem;
+      color: #93c5fd;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .footer-strip {
+      background: rgba(10, 13, 20, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.65rem;
+      color: #6c7a9a;
+    }
+
+    /* RESPONSIVE: kwenye simu, paneli za kando ziwe juu na chini au zipate nafasi */
+    @media (max-width: 800px) {
+      .app {
+        flex-direction: column;
+        padding: 12px;
+        gap: 12px;
+      }
+      .side-panel {
+        max-height: none;
+        width: 100%;
+      }
+      .center-col {
+        width: 100%;
+      }
+      .pw-value {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+      }
+    }
+
+    /* scroll nzuri kwa panels */
+    .side-panel::-webkit-scrollbar { width: 4px; }
+    .side-panel::-webkit-scrollbar-track { background: #1f2a44; border-radius: 10px; }
+    .side-panel::-webkit-scrollbar-thumb { background: #1a6ef5; border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <!-- PANEL YA KUSHOTO - HUDUMA ZA KISHERIA NA TAASISI -->
+  <div class="side-panel">
+    <div class="panel-title">
+      <i class="fas fa-building"></i> Huduma za kisheria &amp; taasisi
+    </div>
+    <div class="services-list">
+      <div class="service-item"><i class="fas fa-briefcase"></i> Usajili wa makampuni</div>
+      <div class="service-item"><i class="fas fa-baby-carriage"></i> Cheti cha kuzaliwa</div>
+      <div class="service-item"><i class="fas fa-skull"></i> Cheti cha kifo</div>
+      <div class="service-item"><i class="fas fa-heart"></i> Cheti cha ndoa</div>
+      <div class="service-item"><i class="fas fa-file-alt"></i> Loss report</div>
+      <div class="service-item"><i class="fas fa-chart-line"></i> Usajili wa microfinance</div>
+      <div class="service-item"><i class="fas fa-id-card"></i> TIN registration</div>
+      <div class="service-item"><i class="fas fa-fingerprint"></i> Maombi ya NIDA</div>
+      <div class="service-item"><i class="fas fa-store"></i> Usajili wa biashara (BRELA)</div>
+      <div class="service-item"><i class="fas fa-graduation-cap"></i> Maombi ya mikopo (HESLB)</div>
+    </div>
+  </div>
+
+  <!-- SEHEMU YA KATI (LOGIN / DASHBOARD) -->
+  <div class="center-col">
+    <div class="header-strip">
+      <div class="logo-box">
+        <img src="logo.png" alt="Klyro" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <span class="logo-fallback" style="display:none;">K</span>
+      </div>
+      <div class="header-text">
+        <h1>Klyro Enterprises</h1>
+        <p>Mfumo wa kijamii na huduma</p>
+      </div>
+    </div>
+
+    <div class="main-card">
+      <!-- LOGIN VIEW -->
+      <div id="loginView">
+        <label class="field-label"><i class="fas fa-key"></i> Nenosiri la mfumo</label>
+        <div class="input-row">
+          <input type="password" id="pwInput" placeholder="Ingiza nenosiri...">
+          <button type="button" class="eye-btn" onclick="toggleEye()"><i class="far fa-eye-slash" id="eyeIcon"></i></button>
+        </div>
+        <button class="btn-login" onclick="doLogin()"><i class="fas fa-arrow-right-to-bracket"></i> Fungua Mfumo</button>
+        <div class="error-box" id="errBox"><i class="fas fa-circle-exclamation"></i> <span id="errMsg"></span></div>
+
+        <div class="contact-section">
+          <div class="contact-heading"><i class="fas fa-headset"></i> Kwa msaada wa haraka</div>
+          <div class="contact-grid">
+            <a class="contact-btn phone" href="tel:+255763915562"><i class="fas fa-phone-alt"></i> +255 763 915 562</a>
+            <a class="contact-btn phone" href="tel:+255663445562"><i class="fas fa-phone-alt"></i> +255 663 445 562</a>
+          </div>
+          <div class="contact-grid">
+            <a class="contact-btn wa" href="https://wa.me/255763915562?text=Karibu%20Klyro%20Services%2C%20ninahitaji%20msaada." target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a class="contact-btn gmail" href="https://mail.google.com/mail/?view=cm&to=klyro.connect@gmail.com&su=Klyro%20Support&body=Habari%2C%0A%0ANinahitaji%20msaada%20wa%20huduma." target="_blank"><i class="fab fa-google"></i> Gmail</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DASHBOARD VIEW -->
+      <div id="dashView">
+        <div class="dash-topbar">
+          <div class="badge-ok"><i class="fas fa-shield-check"></i> Umeingia kwa usalama</div>
+          <button class="btn-logout" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Toka</button>
+        </div>
+        <div class="pw-card">
+          <div class="pw-chip"><i class="fas fa-fingerprint"></i> Nenosiri la leo (wife password)</div>
+          <div class="pw-value" id="pwDisplay">––––</div>
+          <button class="btn-copy" onclick="copyPw()"><i class="fas fa-copy"></i> Nakili nenosiri</button>
+          <div class="copy-ok" id="copyOk"></div>
+        </div>
+        <div class="info-notice">
+          <i class="fas fa-circle-info"></i> Nenosiri hili hubadilishwa kwenye GitHub kila siku.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-strip">
+      &copy; 2025 Klyro Enterprises &middot; Tanzania
+    </div>
+  </div>
+
+  <!-- PANEL YA KULIA - TEKNOLOJIA NA BIASHARA -->
+  <div class="side-panel">
+    <div class="panel-title">
+      <i class="fas fa-microchip"></i> Teknolojia &amp; biashara
+    </div>
+    <div class="services-list">
+      <div class="service-item"><i class="fas fa-id-card"></i> Digital Business Cards</div>
+      <div class="service-item"><i class="fas fa-qrcode"></i> Advanced QR Codes</div>
+      <div class="service-item"><i class="fas fa-barcode"></i> Barcodes</div>
+      <div class="service-item"><i class="fas fa-chart-simple"></i> Mifumo ya mauzo (stock)</div>
+      <div class="service-item"><i class="fas fa-users"></i> Employees management</div>
+      <div class="service-item"><i class="fas fa-coins"></i> Salary management</div>
+      <div class="service-item"><i class="fas fa-envelope"></i> Professional Gmail accounts</div>
+      <div class="service-item"><i class="fas fa-address-card"></i> Advanced vCards</div>
+      <div class="service-item"><i class="fas fa-handshake"></i> Customer management</div>
+      <div class="service-item"><i class="fas fa-tasks"></i> KlyroTodoList</div>
+      <div class="service-item"><i class="fas fa-laptop-code"></i> KlyroFix (laptop/computer)</div>
+      <div class="service-item"><i class="fas fa-database"></i> Data za utafiti</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ========== MSINGI WA MFUMO ==========
+  const LOGIN_PASSWORD = "klyro";
+  let WIFE_PASSWORD = "4521oOpk2";   // Badilisha hapa kila siku
+  const SESSION_KEY = "klyro_auth_v3";
+
+  const loginView = document.getElementById("loginView");
+  const dashView = document.getElementById("dashView");
+  const pwInput = document.getElementById("pwInput");
+  const eyeIcon = document.getElementById("eyeIcon");
+  const errBox = document.getElementById("errBox");
+  const errMsg = document.getElementById("errMsg");
+  const pwDisplay = document.getElementById("pwDisplay");
+  const copyOk = document.getElementById("copyOk");
+
+  function toggleEye() {
+    if (pwInput.type === "password") {
+      pwInput.type = "text";
+      eyeIcon.className = "far fa-eye";
+    } else {
+      pwInput.type = "password";
+      eyeIcon.className = "far fa-eye-slash";
+    }
+  }
+
+  function showDash() {
+    loginView.style.display = "none";
+    dashView.style.display = "flex";
+    pwDisplay.textContent = WIFE_PASSWORD;
+    copyOk.textContent = "";
+  }
+
+  function showLogin(clearInput = true) {
+    dashView.style.display = "none";
+    loginView.style.display = "flex";
+    if (clearInput) {
+      pwInput.value = "";
+      pwInput.type = "password";
+      eyeIcon.className = "far fa-eye-slash";
+    }
+    errBox.style.display = "none";
+  }
+
+  function doLogin() {
+    const val = pwInput.value.trim();
+    if (!val) {
+      errMsg.textContent = "Tafadhali ingiza nenosiri.";
+      errBox.style.display = "flex";
+      return;
+    }
+    if (val === LOGIN_PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, "true");
+      showDash();
+    } else {
+      errMsg.textContent = "Nenosiri si sahihi. Jaribu 'klyro'.";
+      errBox.style.display = "flex";
+      pwInput.value = "";
+      pwInput.focus();
+    }
+  }
+
+  function doLogout() {
+    sessionStorage.removeItem(SESSION_KEY);
+    showLogin(true);
+  }
+
+  async function copyPw() {
+    try {
+      await navigator.clipboard.writeText(WIFE_PASSWORD);
+      copyOk.innerHTML = '<i class="fas fa-check-circle"></i> Ime nakiliwa!';
+      setTimeout(() => { copyOk.textContent = ""; }, 2000);
+    } catch(e) {
+      copyOk.textContent = "Nakili manually: " + WIFE_PASSWORD;
+    }
+  }
+
+  pwInput.addEventListener("keypress", (e) => { if (e.key === "Enter") doLogin(); });
+  pwInput.addEventListener("input", () => { errBox.style.display = "none"; });
+
+  // Angalia session
+  if (sessionStorage.getItem(SESSION_KEY) === "true") {
+    showDash();
+  } else {
+    showLogin(false);
+  }
+
+  window.addEventListener("pageshow", () => {
+    if (sessionStorage.getItem(SESSION_KEY) === "true" && loginView.style.display !== "none") {
+      showDash();
+    }
+  });
+</script>
+</body>
+</html>
